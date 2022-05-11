@@ -5,6 +5,7 @@ import { presetAttributify, presetIcons, presetUno } from 'unocss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [Unocss({
     theme: {
       fontFamily: {

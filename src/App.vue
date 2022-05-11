@@ -1,11 +1,6 @@
 <script setup lang="ts">
-import { useDark } from "@vueuse/core";
 import Plum from "./plum.vue";
-
-const isDark = useDark();
-function toggleDark() {
-  isDark.value = !isDark.value;
-}
+import { isDark, toggleDark } from "./toggleDark";
 </script>
 
 <template>
@@ -24,7 +19,7 @@ function toggleDark() {
       </a>
     </div>
   </nav>
-  <Plum :color="isDark ? '#ddd' : '#555'" />
+  <Plum />
 </template>
 
 <style scoped>

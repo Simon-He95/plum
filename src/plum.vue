@@ -4,9 +4,13 @@ const attrs = useAttrs();
 const color = ref(attrs.color);
 const el = ref<HTMLCanvasElement>();
 const ctx = computed(() => el!.value?.getContext("2d")!);
-const WIDTH = 600;
-const HEIGHT = 600;
+const WIDTH = ref(600);
+const HEIGHT = ref(600);
 const LENGTH = 20;
+if (window.innerWidth < 600) {
+  WIDTH.value = window.innerWidth - 50;
+  HEIGHT.value = window.innerWidth - 50;
+}
 onMounted(() => {
   init();
 });
@@ -45,20 +49,20 @@ function getEndPoint(b: Branch) {
 const pendingTasks: Function[] = [];
 
 function init() {
-  unref(ctx).strokeStyle = color.value;
+  unref(ctx).strokeStyle = "#88888825";
   step({
-    start: { x: WIDTH / 4, y: HEIGHT },
+    start: { x: WIDTH.value / 4, y: HEIGHT.value },
     length: LENGTH,
     theta: -Math.PI / 2,
   });
   step({
-    start: { x: (3 * WIDTH) / 4, y: 0 },
+    start: { x: (3 * WIDTH.value) / 4, y: 0 },
     length: LENGTH,
     theta: Math.PI / 2,
   });
 }
 function boundary(p: Point) {
-  if (p.x < 0 || p.x > WIDTH || p.y > HEIGHT || p.y < 0) {
+  if (p.x < 0 || p.x > WIDTH.value || p.y > HEIGHT.value || p.y < 0) {
     return false;
   }
   return true;
@@ -114,9 +118,9 @@ startFrame();
 <template>
   <canvas
     ref="el"
-    width="600"
-    height="600"
-    :style="{ border: `1px solid ${color}` }"
+    :width="WIDTH"
+    :height="HEIGHT"
+    style="border: 1px solid #88888825"
   ></canvas>
 </template>
 
