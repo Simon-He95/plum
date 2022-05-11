@@ -1,7 +1,8 @@
-import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
 import Unocss from 'unocss/vite'
-import { presetAttributify, presetIcons, presetUno } from 'unocss'
+import UnocssIcons from '@unocss/preset-icons'
+import { presetAttributify } from 'unocss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +14,8 @@ export default defineConfig({
       },
     },
     presets: [
-      presetIcons({
+      UnocssIcons({
+        prefix: 'i-',
         extraProperties: {
           'display': 'inline-block',
           'height': '1.2em',
@@ -22,7 +24,6 @@ export default defineConfig({
         },
       }),
       presetAttributify(),
-      presetUno(),
     ]
   }), vue()]
 })

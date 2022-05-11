@@ -7,15 +7,11 @@ import { isDark, toggleDark } from "./toggleDark";
   <nav class="nav" :style="isDark ? 'color:rgb(229, 231, 235)' : 'rgb(55, 65, 81)'">
     <div class="right">
       <a href="https://github.com/Simon-He95/plum" target="_blank" title="GitHub">
-        <span class="iconify-inline" data-icon="uil:github-alt"></span>
+        <span i-uil:github-alt></span>
       </a>
       <a class="select-none" title="Toggle Color Scheme" @click="toggleDark">
-        <span v-show="isDark"
-          ><i class="iconify-inline" data-icon="ri:moon-line"></i
-        ></span>
-        <span v-show="!isDark"
-          ><i class="iconify-inline" data-icon="clarity:sun-line"></i
-        ></span>
+        <span v-show="isDark" i-ri:moon-line></span>
+        <span v-show="!isDark" i-ri:sun-line></span>
       </a>
     </div>
   </nav>
